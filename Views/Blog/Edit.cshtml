@@ -1,0 +1,58 @@
+﻿@{
+ViewData["Title"] = "Edit Blog";
+Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<style>
+    .form-centered-content {
+        flex: 1;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 2rem 0;
+    }
+</style>
+
+<!-- Main Content - Centered Vertically -->
+<div class="form-centered-content">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-md-8 col-lg-6">
+                <!-- Form Container -->
+                <div class="form-container">
+                    <h2 class="form-title">Edit Blog</h2>
+
+                    <form>
+                        <!-- Title Field -->
+                        <div class="mb-4">
+                            <label for="blogTitle" class="form-label">Blog Title</label>
+                            <input type="text"
+                                   class="form-control"
+                                   id="blogTitle"
+                                   required>
+                        </div>
+
+                        <!-- Description Field -->
+                        <div class="mb-4">
+                            <label for="blogDescription" class="form-label">Blog Description</label>
+                            <textarea class="form-control"
+                                      id="blogDescription"
+                                      rows="5"
+                                      required></textarea>
+                        </div>
+
+                        <!-- Buttons -->
+                        <div class="button-group">
+                            <a class="btn btn-back" asp-controller="Blog" asp-action="Index">
+                                <i class="fas fa-arrow-left me-1"></i> Back
+                            </a>
+                            <button type="submit" class="btn btn-create-form">
+                                <i class="fas fa-plus me-1"></i> Edit Blog
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

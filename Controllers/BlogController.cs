@@ -14,4 +14,9 @@ public class BlogController : Controller
     {
         return View("Create");
     }
+    
+    public IActionResult Edit()
+    {
+        return View("Edit");
+    }
 }
