@@ -9,4 +9,9 @@ public class BlogController : Controller
     {
         return View("Index");
     }
+    
+    public IActionResult Create()
+    {
+        return View("Create");
+    }
 }
