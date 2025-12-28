@@ -9,4 +9,9 @@ public class AuthController : Controller
     {
         return View("Login");
     }
+
+    public IActionResult Signup()
+    {
+        return View("Signup");
+    }
 }
