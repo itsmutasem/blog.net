@@ -1,23 +1,21 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace Blog.Models;
-
-public class User
+namespace Blog.Data
 {
-    public int Id { get; set; }
-    
-    [Required]
-    public string Name { get; set; } = string.Empty;
-    
-    [Required, EmailAddress]
-    public string Email { get; set; } = string.Empty;
-    
-    [Required]
-    public string Password { get; set; } = string.Empty;
-    
-    [Required]
-    public string Role { get; set; } = "User"; // Admin or User
-    
-    // Navigation
-    public ICollection<Blog> Blogs { get; set; } = new List<Blog>();
+    public class User
+    {
+        public int Id { get; set; }
+
+        [Required, MaxLength(100)]
+        public string Name { get; set; } = null!;
+
+        [Required, EmailAddress, MaxLength(100)]
+        public string Email { get; set; } = null!;
+
+        [Required, MinLength(6)]
+        public string Password { get; set; } = null!; // hashed password
+
+        [Required]
+        public string Role { get; set; } = "User"; // default role
+    }
 }
