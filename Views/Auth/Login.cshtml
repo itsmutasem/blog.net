@@ -126,25 +126,27 @@
                     <h2 class="login-title">Welcome Back</h2>
                     <p class="login-subtitle">Sign in to your account to continue</p>
                     
-                    <form>
+                    <form asp-action="Login" method="post">
+                        @Html.AntiForgeryToken()
+                        @if (!ViewData.ModelState.IsValid)
+                        {
+                            <div class="alert alert-danger">
+                                @foreach (var error in ViewData.ModelState.Values.SelectMany(v => v.Errors))
+                                {
+                                    <p>@error.ErrorMessage</p>
+                                }
+                            </div>
+                        }
                         <!-- Email Field -->
                         <div class="mb-3">
                             <label for="email" class="form-label">Email Address</label>
-                            <input type="email" 
-                                   class="form-control" 
-                                   id="email" 
-                                   placeholder="Enter your email" 
-                                   required>
+                            <input type="email" name="email" class="form-control" id="email" placeholder="Enter your email" required>
                         </div>
 
                         <!-- Password Field -->
                         <div class="mb-3">
                             <label for="password" class="form-label">Password</label>
-                            <input type="password" 
-                                   class="form-control" 
-                                   id="password" 
-                                   placeholder="Enter your password" 
-                                   required>
+                            <input type="password" name="password" class="form-control" id="password" placeholder="Enter your password" required>
                         </div>
 
                         <!-- Buttons -->

@@ -23,6 +23,7 @@ namespace Blog.Controllers
 
         // POST: Signup
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public async Task<IActionResult> Signup(string name, string email, string password, string confirmPassword)
         {
             if (password != confirmPassword)
