@@ -85,7 +85,7 @@
             </div>
 
             <div class="flex justify-center mb-4 text-center">
-                <a href="{{ route('books.create') }}" class="mt-6 text-white bg-purple-900/40 font-semibold w-full px-5 py-2 rounded-md hover:bg-purple-950/50">+ Create New Blog</a>
+                <a asp-controller="Blog" asp-action="Create" class="mt-6 text-white bg-purple-900/40 font-semibold w-full px-5 py-2 rounded-md hover:bg-purple-950/50">+ Create New Blog</a>
             </div>
 
             <div x-data="{ show: false }" x-init="setTimeout(() => show = true, 300)">
