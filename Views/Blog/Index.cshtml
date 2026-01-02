@@ -1,5 +1,8 @@
 ﻿@model Blog.Models.ViewModels.BlogIndexViewModel
 @using Blog.Models.ViewModels
+@{
+    var role = Context.Session.GetString("UserRole");
+}
 <!doctype html>
 <html lang="en">
 <head>
@@ -110,13 +113,16 @@
                                     <a asp-controller="Blog" asp-action="Show" asp-route-id="@blog.Id" class="text-white text-2xl font-bold mb-3">@blog.Title</a>
                                     <p class="text-purple-700 text-sm font-bold">Author: @blog.Author?.Name</p>
                                 </div>
-                                <div class="flex-inline justify-self-end col-span-2 col-end-7 mt-5 space-x-4">
-                                    <a asp-controller="Blog" asp-action="Edit" asp-route-id="@blog.Id" class="text-purple-700 hover:text-purple-500">Edit</a>
-                                    <form asp-controller="Blog" asp-action="Delete" asp-route-id="@blog.Id" method="post" onsubmit="return confirm('Are you sure you want to delete this blog?');" class="inline">
-                                        @Html.AntiForgeryToken()
-                                        <button type="submit" class="text-purple-700 hover:text-purple-500">Delete</button>
-                                    </form>
-                                </div>
+                                @if (role == "Admin")
+                                {
+                                    <div class="flex-inline justify-self-end col-span-2 col-end-7 mt-5 space-x-4">
+                                        <a asp-controller="Blog" asp-action="Edit" asp-route-id="@blog.Id" class="text-purple-700 hover:text-purple-500">Edit</a>
+                                        <form asp-controller="Blog" asp-action="Delete" asp-route-id="@blog.Id" method="post" onsubmit="return confirm('Are you sure you want to delete this blog?');" class="inline">
+                                            @Html.AntiForgeryToken()
+                                            <button type="submit" class="text-purple-700 hover:text-purple-500">Delete</button>
+                                        </form>
+                                    </div>
+                                }
                             </div>
 
                         }

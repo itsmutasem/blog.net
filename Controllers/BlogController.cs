@@ -3,6 +3,7 @@ using Microsoft.EntityFrameworkCore;
 using Blog.Data;
 using Blog.Models;
 using Blog.Models.ViewModels;
+using Blog.Filters;
 
 namespace Blog.Controllers;
 
@@ -65,6 +66,7 @@ public class BlogController : Controller
         return RedirectToAction(nameof(Index));
     }
 
+    [AdminOnly]
     public async Task<IActionResult> Edit(int id)
     {
         var blog = await _context.Blogs.FindAsync(id);
@@ -75,6 +77,7 @@ public class BlogController : Controller
 
     [HttpPost]
     [ValidateAntiForgeryToken]
+    [AdminOnly]
     public async Task<IActionResult> Edit(int id, string title, string description, string category)
     {
         var blog = await _context.Blogs.FindAsync(id);
@@ -90,6 +93,7 @@ public class BlogController : Controller
     
     [HttpPost]
     [ValidateAntiForgeryToken]
+    [AdminOnly]
     public async Task<IActionResult> Delete(int id)
     {
         var blog = await _context.Blogs
