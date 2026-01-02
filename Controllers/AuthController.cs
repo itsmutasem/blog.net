@@ -71,7 +71,7 @@ namespace Blog.Controllers
             HttpContext.Session.SetString("UserRole", user.Role);
             HttpContext.Session.SetString("UserName", user.Name);
 
-            return RedirectToAction("Index", "Home");
+            return RedirectToAction("Index", "Blog");
         }
 
         private string HashPassword(string password)

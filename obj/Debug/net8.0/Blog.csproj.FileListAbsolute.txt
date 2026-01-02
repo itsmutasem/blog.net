@@ -128,6 +128,11 @@ C:\Users\MCC\not-net-project\Blog\obj\Debug\net8.0\Blog.RazorAssemblyInfo.cs
 C:\Users\MCC\not-net-project\Blog\obj\Debug\net8.0\Blog.sourcelink.json
 C:\Users\MCC\not-net-project\Blog\obj\Debug\net8.0\staticwebassets.build.json
 C:\Users\MCC\not-net-project\Blog\obj\Debug\net8.0\staticwebassets.development.json
+C:\Users\MCC\not-net-project\Blog\obj\Debug\net8.0\staticwebassets\msbuild.Blog.Microsoft.AspNetCore.StaticWebAssets.props
+C:\Users\MCC\not-net-project\Blog\obj\Debug\net8.0\staticwebassets\msbuild.build.Blog.props
+C:\Users\MCC\not-net-project\Blog\obj\Debug\net8.0\staticwebassets\msbuild.buildMultiTargeting.Blog.props
+C:\Users\MCC\not-net-project\Blog\obj\Debug\net8.0\staticwebassets\msbuild.buildTransitive.Blog.props
+C:\Users\MCC\not-net-project\Blog\obj\Debug\net8.0\staticwebassets.pack.json
 C:\Users\MCC\not-net-project\Blog\obj\Debug\net8.0\scopedcss\Views\Shared\_Layout.cshtml.rz.scp.css
 C:\Users\MCC\not-net-project\Blog\obj\Debug\net8.0\scopedcss\bundle\Blog.styles.css
 C:\Users\MCC\not-net-project\Blog\obj\Debug\net8.0\scopedcss\projectbundle\Blog.bundle.scp.css
@@ -137,8 +142,3 @@ C:\Users\MCC\not-net-project\Blog\obj\Debug\net8.0\refint\Blog.dll
 C:\Users\MCC\not-net-project\Blog\obj\Debug\net8.0\Blog.pdb
 C:\Users\MCC\not-net-project\Blog\obj\Debug\net8.0\Blog.genruntimeconfig.cache
 C:\Users\MCC\not-net-project\Blog\obj\Debug\net8.0\ref\Blog.dll
-C:\Users\MCC\not-net-project\Blog\obj\Debug\net8.0\staticwebassets\msbuild.Blog.Microsoft.AspNetCore.StaticWebAssets.props
-C:\Users\MCC\not-net-project\Blog\obj\Debug\net8.0\staticwebassets\msbuild.build.Blog.props
-C:\Users\MCC\not-net-project\Blog\obj\Debug\net8.0\staticwebassets\msbuild.buildMultiTargeting.Blog.props
-C:\Users\MCC\not-net-project\Blog\obj\Debug\net8.0\staticwebassets\msbuild.buildTransitive.Blog.props
-C:\Users\MCC\not-net-project\Blog\obj\Debug\net8.0\staticwebassets.pack.json

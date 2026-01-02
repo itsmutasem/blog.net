@@ -1,8 +1,59 @@
-﻿@{
-    ViewData["Title"] = "Home Page";
-}
+﻿<!doctype html>
+<html>
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="//unpkg.com/alpinejs" defer></script>
+    <style>
+        body {
+            /*background-color: #03001c;*/
+            /*background-image: radial-gradient(at 7% 43%, #03001c 0%, transparent 60%), radial-gradient(at 83% 89%, #301e67 0%, transparent 50%), radial-gradient(at 10% 24%, #5b8fb9 0%, transparent 40%), radial-gradient(at 47% 8%, #b6eada 0%, transparent 30%);*/
+            background-color: #000000;
+            background-image: radial-gradient(at 29% 12%, #000000 0%, transparent 60%), radial-gradient(at 58% 18%, #3f005f 0%, transparent 50%), radial-gradient(at 31% 39%, #6c00a1 0%, transparent 40%), radial-gradient(at 66% 98%, #220033 0%, transparent 30%);
+        }
+    </style>
+</head>
+<body class="min-h-screen">
+<div class="relative z-10 text-center flex items-center justify-center min-h-screen">
+    <div x-data="{ show: false }" x-init="setTimeout(() => show = true, 300)">
+        <div class="inline-flex items-center mb-2"
+             x-cloak
+             x-show="show"
+             x-transition:enter="transition ease-out duration-1000"
+             x-transition:enter-start="opacity-0 scale-90"
+             x-transition:enter-end="opacity-100 scale-100">
+            <h4 class="text-sm text-white/50 rounded-full bg-white/10 px-3 py-1 w-fit">Welcome to IT Blogs</h4>
+        </div>
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://learn.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+        <div x-cloak
+             x-show="show"
+             x-transition:enter="transition ease-out duration-1000"
+             x-transition:enter-start="opacity-0 scale-90"
+             x-transition:enter-end="opacity-100 scale-100">
+            <div class="text-8xl font-bold mb-6 tracking-tight font-serif italic">
+                <h1 class="text-white">Read & Write</h1>
+                <h1 class="text-white/50">with real value</h1>
+            </div>
+        </div>
+
+        <div x-cloak
+             x-show="show"
+             x-transition:enter="transition ease-out duration-1000"
+             x-transition:enter-start="opacity-0 scale-90"
+             x-transition:enter-end="opacity-100 scale-100">
+            <p class="text-white/50 mb-6">A place where ideas are shared, knowledge is built, and stories are told.</p>
+        </div>
+
+        <div x-cloak
+             x-show="show"
+             x-transition:enter="transition ease-out duration-1000"
+             x-transition:enter-start="opacity-0 scale-90"
+             x-transition:enter-end="opacity-100 scale-100">
+            <a href="" class="text-white bg-white/10 px-4 py-2 rounded-lg hover:bg-white/20">Login</a>
+            <a href="" class="text-white bg-gradient-to-r from-purple-900 to-violet-900/40 px-4 py-2 rounded-lg hover:from-purple-700 hover:to-violet-900">Explore Blogs →</a>
+        </div>
+    </div>
 </div>
+</body>
+</html>

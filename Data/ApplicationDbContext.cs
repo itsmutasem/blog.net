@@ -11,7 +11,7 @@ namespace Blog.Data
         {
         }
 
-        public DbSet<User> Users => Set<User>();
-        public DbSet<BlogEntity> Blogs => Set<BlogEntity>();
+        public DbSet<BlogEntity> Blogs { get; set; } = null!;
+        public DbSet<User> Users { get; set; } = null!;
     }
 }
