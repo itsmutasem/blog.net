@@ -1,210 +1,127 @@
-﻿@{
-    ViewData["Title"] = "Sign Up";
-    Layout = "~/Views/Shared/_Layout.cshtml";
-}
-
-<style>
-    body {
-        min-height: 100vh;
-        display: flex;
-        flex-direction: column;
-    }
-
-    main {
-        flex: 1;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        padding: 2rem 0;
-    }
-    
-    .signup-container {
-        background-color: #1e1e1e;
-        border: 1px solid #333333;
-        border-radius: 10px;
-        padding: 1.5rem;
-        width: 100%;
-        max-width: 450px;
-    }
-    
-    .signup-title {
-        font-weight: 700;
-        font-size: 1.75rem;
-        color: #bb86fc;
-        margin-bottom: 1.5rem;
-        text-align: center;
-    }
-    
-    .signup-subtitle {
-        color: #b0b0b0;
-        text-align: center;
-        margin-bottom: 1.5rem;
-        font-size: 0.95rem;
-    }
-    
-    .signup-button-group {
-        display: flex;
-        justify-content: space-between;
-        gap: 0.75rem;
-        margin-top: 1.5rem;
-    }
-    
-    .btn-signup-submit {
-        background-color: #bb86fc;
-        border-color: #bb86fc;
-        color: #000000;
-        font-weight: 600;
-        padding: 0.5rem 1.25rem;
-        border-radius: 6px;
-        font-size: 0.9rem;
-        flex: 1;
-    }
-    
-    .btn-signup-submit:hover {
-        background-color: #9d5af5;
-        border-color: #9d5af5;
-        color: #000000;
-    }
-    
-    .btn-back-login {
-        background-color: rgba(255, 255, 255, 0.1);
-        border: 1px solid #333333;
-        color: #ffffff;
-        font-weight: 600;
-        padding: 0.5rem 1.25rem;
-        border-radius: 6px;
-        font-size: 0.9rem;
-        flex: 1;
-    }
-    
-    .btn-back-login:hover {
-        background-color: rgba(255, 255, 255, 0.2);
-        border-color: #666666;
-        color: #ffffff;
-    }
-    
-    .form-label {
-        color: #ffffff;
-        font-weight: 500;
-        margin-bottom: 0.3rem;
-        font-size: 0.9rem;
-    }
-    
-    .form-control {
-        background-color: #2d2d2d;
-        border: 1px solid #333333;
-        color: #ffffff;
-        padding: 0.6rem;
-        border-radius: 6px;
-        font-size: 0.9rem;
-    }
-    
-    .form-control:focus {
-        background-color: #2d2d2d;
-        border-color: #bb86fc;
-        color: #ffffff;
-        box-shadow: 0 0 0 0.2rem rgba(187, 134, 252, 0.25);
-    }
-    
-    .form-control::placeholder {
-        color: #666666;
-        font-size: 0.9rem;
-    }
-    
-    .mb-3 {
-        margin-bottom: 1rem !important;
-    }
-    
-    .form-text {
-        color: #888888;
-        font-size: 0.8rem;
-        margin-top: 0.25rem;
-    }
-    
-    .password-requirements {
-        margin-top: 0.5rem;
-        padding: 0.75rem;
-        background-color: rgba(255, 255, 255, 0.05);
-        border-radius: 6px;
-        border-left: 3px solid #bb86fc;
-    }
-    
-    .requirements-title {
-        color: #bb86fc;
-        font-size: 0.85rem;
-        font-weight: 600;
-        margin-bottom: 0.25rem;
-    }
-    
-    .requirements-list {
-        color: #b0b0b0;
-        font-size: 0.8rem;
-        margin-bottom: 0;
-        padding-left: 1rem;
-    }
-    
-    .requirements-list li {
-        margin-bottom: 0.1rem;
-    }
-</style>
-
-<!-- Main Content - Centered Vertically -->
-<main>
-    <div class="container">
-        <div class="row justify-content-center">
-            <div class="col-12 col-md-8 col-lg-5">
-                <!-- Sign Up Container -->
-                <div class="signup-container">
-                    <h2 class="signup-title">Create Account</h2>
-                    
-                    <form asp-action="Signup" method="post">
-                        @Html.AntiForgeryToken()
-                        @if (!ViewData.ModelState.IsValid)
-                        {
-                            <div class="alert alert-danger">
-                                @foreach (var error in ViewData.ModelState.Values.SelectMany(v => v.Errors))
-                                {
-                                    <p>@error.ErrorMessage</p>
-                                }
+﻿<!doctype html>
+<html>
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="//unpkg.com/alpinejs" defer></script>
+</head>
+<body class="bg-zinc-950 min-h-screen flex items-center justify-center">
+<div class="mx-auto max-w-md min-w-[490px] px-4 py-6 sm:px-6 lg:px-8">
+    <div class="bg-neutral-800/30 p-8 rounded-md shadow-lg shadow-black/50">
+        <form method="post" asp-action="Signup">
+            <div class="space-y-8">
+                <div class="grid grid-cols-1 gap-y-6">
+                    <div>
+                        <h1 class="block text-lg font-medium text-white">Create an Account</h1>
+                    </div>
+                    @Html.AntiForgeryToken()
+                    @if (!ViewData.ModelState.IsValid)
+                    {
+                        <div class="border border-red-500 block w-full rounded-md bg-red-500/10 px-3 py-1.5 text-base text-red-500 sm:text-sm/6">
+                            @foreach (var error in ViewData.ModelState.Values.SelectMany(v => v.Errors))
+                            {
+                                <p>@error.ErrorMessage</p>
+                            }
+                        </div>
+                    }
+                    <div>
+                        <label for="name" class="block text-sm/6 font-medium text-white">Name</label>
+                        <div class="mt-2">
+                            <input id="name" type="text" name="name"
+                                   class="outline-white/10 block w-full rounded-md bg-white/5 px-3 py-1.5 text-base text-white outline-1 -outline-offset-1 placeholder:text-gray-500 focus:outline-2 focus:-outline-offset-2 focus:outline-purple-700 sm:text-sm/6"
+                                   autofocus>
+                        </div>
+                    </div>
+                    <div>
+                        <label for="email" class="block text-sm/6 font-medium text-white">Email</label>
+                        <div class="mt-2">
+                            <input id="email" type="email" name="email"
+                                   class="outline-white/10 block w-full rounded-md bg-white/5 px-3 py-1.5 text-base text-white outline-1 -outline-offset-1 placeholder:text-gray-500 focus:outline-2 focus:-outline-offset-2 focus:outline-purple-700 sm:text-sm/6">
+                        </div>
+                    </div>
+                    <div>
+                        <label for="password" class="block text-sm/6 font-medium text-white">Password</label>
+                        <div class="mt-2">
+                            <div x-data="{ show: false }" class="relative">
+                                <input
+                                        id="password"
+                                        :type="show ? 'text' : 'password'"
+                                        name="password"
+                                        class="outline-white/10 block w-full rounded-md bg-white/5 px-3 py-1.5 text-base text-white outline-1 -outline-offset-1 placeholder:text-gray-500 focus:outline-2 focus:-outline-offset-2 focus:outline-purple-700 sm:text-sm/6"
+                                >
+                                <button type="button"
+                                        @@click="show = !show"
+                                        class="absolute inset-y-0 right-0 flex items-center px-3 text-gray-400"
+                                        tabindex="-1"
+                                >
+                                    <svg x-show="!show" xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none"
+                                         viewBox="0 0 24 24" stroke="currentColor">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                              d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/>
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                              d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.478 0-8.268-2.943-9.542-7z"/>
+                                    </svg>
+                                    <svg x-show="show" xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none"
+                                         viewBox="0 0 24 24" stroke="currentColor">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                              d="M13.875 18.825a9.56 9.56 0 01-1.875.175c-4.478 0-8.268-2.943-9.542-7 1.002-3.364 3.843-6 7.542-7.575M15 12a3 3 0 00-6 0 3 3 0 006 0z"/>
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                              d="M3 3l18 18"/>
+                                    </svg>
+                                </button>
                             </div>
-                        }
-                        <!-- Name Field -->
-                        <div class="mb-3">
-                            <label for="fullName" class="form-label">Full Name</label>
-                            <input type="text" name="name" class="form-control" id="fullName" placeholder="Enter your full name" required>
-
                         </div>
-
-                        <!-- Email Field -->
-                        <div class="mb-3">
-                            <label for="email" class="form-label">Email Address</label>
-                            <input type="email" name="email" class="form-control" id="email" placeholder="Enter your email" required>
+                    </div>
+                    <div>
+                        <label for="confirmPassword" class="block text-sm/6 font-medium text-white">Confirm
+                            Password</label>
+                        <div class="mt-2">
+                            <div class="mt-2">
+                                <div x-data="{ show: false }" class="relative">
+                                    <input
+                                            id="password"
+                                            :type="show ? 'text' : 'password'"
+                                            name="confirmPassword"
+                                            class="outline-white/10 block w-full rounded-md bg-white/5 px-3 py-1.5 text-base text-white outline-1 -outline-offset-1 placeholder:text-gray-500 focus:outline-2 focus:-outline-offset-2 focus:outline-purple-700 sm:text-sm/6"
+                                    >
+                                    <button type="button"
+                                            @@click="show = !show"
+                                            class="absolute inset-y-0 right-0 flex items-center px-3 text-gray-400"
+                                            tabindex="-1"
+                                    >
+                                        <svg x-show="!show" xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none"
+                                             viewBox="0 0 24 24" stroke="currentColor">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                                  d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/>
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                                  d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.478 0-8.268-2.943-9.542-7z"/>
+                                        </svg>
+                                        <svg x-show="show" xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none"
+                                             viewBox="0 0 24 24" stroke="currentColor">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                                  d="M13.875 18.825a9.56 9.56 0 01-1.875.175c-4.478 0-8.268-2.943-9.542-7 1.002-3.364 3.843-6 7.542-7.575M15 12a3 3 0 00-6 0 3 3 0 006 0z"/>
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                                  d="M3 3l18 18"/>
+                                        </svg>
+                                    </button>
+                                </div>
+                            </div>
                         </div>
-
-                        <!-- Password Field -->
-                        <div class="mb-3">
-                            <label for="password" class="form-label">Password</label>
-                            <input type="password" name="password" class="form-control" id="password" placeholder="Create a password" required>
-                        </div>
-
-                        <!-- Confirm Password Field -->
-                        <div class="mb-3">
-                            <label for="confirmPassword" class="form-label">Confirm Password</label>
-                            <input type="password" name="confirmPassword" class="form-control" id="confirmPassword" placeholder="Confirm your password" required>
-                        </div>
-
-                        <!-- Buttons -->
-                        <div class="signup-button-group">
-                            <a class="btn btn-back-login" asp-controller="Auth" asp-action="Login">
-                                <i class="fas fa-arrow-left me-1"></i> Back to Login
-                            </a>
-                            <button type="submit" class="btn btn-signup-submit">
-                                <i class="fas fa-user-plus me-1"></i> Sign Up
-                            </button>
-                        </div>
-                    </form>
+                    </div>
                 </div>
             </div>
-        </div>
+            <div>
+                <button type="submit" class="mt-6 flex w-full justify-center rounded-md bg-gradient-to-r from-purple-900 to-violet-900/40 hover:from-purple-700 hover:to-violet-900 px-3 py-1.5 text-sm/6 font-semibold text-white hover:bg-indigo-400 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-500">Sign up</button>
+            </div>
+            <div>
+                <p class="mt-2 text-center text-sm text-gray-500">
+                    Already have an account?
+                    <a asp-controller="Auth" asp-action="Login" class="font-medium text-purple-700 hover:text-purple-500">Login</a>
+                </p>
+            </div>
+        </form>
     </div>
-</main>
+</div>
+</body>
+</html>
