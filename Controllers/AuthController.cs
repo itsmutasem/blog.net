@@ -88,5 +88,26 @@ namespace Blog.Controllers
             HttpContext.Session.Clear();
             return RedirectToAction("Login");
         }
+
+        public async Task<IActionResult> Profile()
+        {
+            var userId = HttpContext.Session.GetInt32("UserId");
+
+            if (userId == null)
+            {
+                return RedirectToAction("Login", "Auth");
+            }
+
+            var user = await _context.Users.FirstOrDefaultAsync(u => u.Id == userId);
+
+            if (user == null)
+            {
+                // Session exists but user deleted / corrupted
+                HttpContext.Session.Clear();
+                return RedirectToAction("Login", "Auth");
+            }
+
+            return View(user);
+        }
     }
 }
