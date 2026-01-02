@@ -111,7 +111,7 @@
                             <div class="bg-neutral-800/30 p-8 rounded-md grid grid-cols-6 gap-4 mb-4 shadow-lg border-2 border-zinc-950 shadow-black/50 hover:border-purple-900 transition duration-300">
                                 <div class="col-start-1 col-end-3">
                                     <a asp-controller="Blog" asp-action="Show" asp-route-id="@blog.Id" class="text-white text-2xl font-bold mb-3">@blog.Title</a>
-                                    <p class="text-purple-700 text-sm font-bold">Author: @blog.Author</p>
+                                    <p class="text-purple-700 text-sm font-bold">Author: @blog.Author?.Name</p>
                                 </div>
                                 <div class="flex-inline justify-self-end col-span-2 col-end-7 mt-5 space-x-4">
                                     <a asp-controller="Blog" asp-action="Edit" asp-route-id="@blog.Id" class="text-purple-700 hover:text-purple-500">Edit</a>
