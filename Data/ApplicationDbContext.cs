@@ -1,6 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Blog.Models;
-using BlogEntity = Blog.Models.Blog;
 
 namespace Blog.Data
 {
@@ -11,7 +10,7 @@ namespace Blog.Data
         {
         }
 
-        public DbSet<BlogEntity> Blogs { get; set; } = null!;
+        public DbSet<BlogPost> Blogs { get; set; } = null!;
         public DbSet<User> Users { get; set; } = null!;
     }
 }

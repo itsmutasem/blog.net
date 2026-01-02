@@ -19,6 +19,6 @@ namespace Blog.Models
         public string Role { get; set; } = "User"; // Admin or User
 
         // Navigation property
-        public ICollection<Blog> Blogs { get; set; } = new List<Blog>();
+        public ICollection<BlogPost> Blogs { get; set; } = new List<BlogPost>();
     }
 }

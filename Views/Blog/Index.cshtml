@@ -1,4 +1,5 @@
-﻿@model IEnumerable<Blog>
+﻿@model Blog.Models.ViewModels.BlogIndexViewModel
+@using Blog.Models.ViewModels
 <!doctype html>
 <html lang="en">
 <head>
@@ -63,11 +64,11 @@
 
             <div class="grid grid-cols-2 gap-4 mt-6">
                 <div class="bg-neutral-800/30 p-8 rounded-md text-center shadow-lg shadow-black/50">
-                    <h1 class="text-5xl font-bold tracking-tight text-purple-700">20</h1>
+                    <h1 class="text-5xl font-bold tracking-tight text-purple-700">@Model.TotalBlogs</h1>
                     <p class="text-white/60">Blogs</p>
                 </div>
                 <div class="bg-neutral-800/30 p-8 rounded-md text-center shadow-lg shadow-black/50">
-                    <h1 class="text-5xl font-bold tracking-tight text-purple-700">15</h1>
+                    <h1 class="text-5xl font-bold tracking-tight text-purple-700">@Model.TotalUsers</h1>
                     <p class="text-white/60">Users</p>
                 </div>
             </div>
@@ -91,7 +92,7 @@
                          x-transition:enter-start="opacity-0 scale-90"
                          x-transition:enter-end="opacity-100 scale-100">
 
-                    @if (Model == null || !Model.Any())
+                    @if (Model == null || !Model.Blogs.Any())
                     {
                         <div class="col-12">
                             <div class="alert alert-info">
@@ -101,7 +102,7 @@
                     }
                     else
                     {
-                        @foreach (var blog in Model)
+                        @foreach (var blog in Model.Blogs)
                         {
 
                             <div class="bg-neutral-800/30 p-8 rounded-md grid grid-cols-6 gap-4 mb-4 shadow-lg border-2 border-zinc-950 shadow-black/50 hover:border-purple-900 transition duration-300">
@@ -120,24 +121,11 @@
 
                         }
                     }
-
                     </div>
                 </div>
         </div>
     </main>
 </div>
-
 </body>
 </html>
-
-
-<!--    <div x-data="{ show: false }" x-init="setTimeout(() => show = true, 300)">-->
-<!--        <div x-cloak-->
-<!--             x-show="show"-->
-<!--             x-transition:enter="transition ease-out duration-1000"-->
-<!--             x-transition:enter-start="opacity-0 scale-90"-->
-<!--             x-transition:enter-end="opacity-100 scale-100">-->
-<!--            <p class="text-white/50 mb-6">A place where ideas are shared, knowledge is built, and stories are told.</p>-->
-<!--        </div>-->
-<!--    </div>-->
 

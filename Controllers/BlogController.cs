@@ -1,7 +1,8 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Blog.Data;
-using BlogEntity = Blog.Models.Blog;
+using Blog.Models;
+using Blog.Models.ViewModels;
 
 namespace Blog.Controllers;
 
@@ -20,7 +21,14 @@ public class BlogController : Controller
             .Include(b => b.Author)
             .ToListAsync();
 
-        return View(blogs);
+        var viewModel = new BlogIndexViewModel
+        {
+            Blogs = blogs,
+            TotalBlogs = await _context.Blogs.CountAsync(),
+            TotalUsers = await _context.Users.CountAsync()
+        };
+
+        return View(viewModel);
     }
     
     public async Task<IActionResult> Show(int id)
@@ -42,16 +50,16 @@ public class BlogController : Controller
 
     [HttpPost]
     [ValidateAntiForgeryToken]
-    public async Task<IActionResult> Create(BlogEntity blog)
+    public async Task<IActionResult> Create(BlogPost blogPost)
     {
         var userId = HttpContext.Session.GetInt32("UserId");
         if (userId == null)
             return RedirectToAction("Login", "Auth");
 
-        blog.UserId = userId.Value;
-        blog.CreatedAt = DateTime.Now;
+        blogPost.UserId = userId.Value;
+        blogPost.CreatedAt = DateTime.Now;
 
-        _context.Blogs.Add(blog);
+        _context.Blogs.Add(blogPost);
         await _context.SaveChangesAsync();
 
         return RedirectToAction(nameof(Index));
