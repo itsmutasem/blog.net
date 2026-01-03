@@ -43,34 +43,9 @@
             </div>
         </div>
     </nav>
-
-    <div x-data="{ show: false }" x-init="setTimeout(() => show = true, 300)">
-        <div x-cloak
-             x-show="show"
-             x-transition:enter="transition ease-out duration-1000"
-             x-transition:enter-start="opacity-0 scale-90"
-             x-transition:enter-end="opacity-100 scale-100">
-
-            <header class="relative bg-zinc-950 after:pointer-events-none after:absolute after:inset-x-0 after:inset-y-0">
-                <div class="mx-auto max-w-7xl px-4 py-6 sm:px-6 lg:px-8">
-                    <h1 class="text-3xl font-bold tracking-tight text-white">@Model.Title</h1>
-                </div>
-            </header>
-
-            <main>
-                <div class="mx-auto max-w-7xl px-4 py-6 sm:px-6 lg:px-8">
-                    <div class="bg-neutral-800/30 p-8 rounded-md  gap-4 mb-4 shadow-lg shadow-black/50">
-                        <a asp-controller="Blog" asp-action="Index" class="text-white/60 text-sm  hover:text-white/80">← Back</a>
-                        <h3 class="text-purple-700 px-2 mt-2 font-bold border border-purple-700 rounded-full w-fit bg-purple-800/20 text-sm">@Model.Category</h3>
-                        <h3 class="text-white text-sm mt-2">@Html.Raw(Model.Description)</h3>
-                        <h3 class="mt-1 text-white text-sm">Created at: @Model.CreatedAt</h3>
-                        <div class="mt-1">
-                            <p class="text-purple-700 font-bold text-sm">By: @Model.Author.Name
-                            </p>
-                        </div>
-                    </div>
-                </div>
-            </main>
+    <div class="mx-auto max-w-7xl px-4 py-6 sm:px-6 lg:px-8">
+        <div class="bg-neutral-800/30 p-8 rounded-md shadow-lg shadow-black/50">
+            <h1 class="text-xl text-white">Talk about your team in this page</h1>
         </div>
     </div>
 </div>

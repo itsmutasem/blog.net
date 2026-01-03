@@ -16,17 +16,25 @@ public class BlogController : Controller
         _context = context;
     }
 
-    public async Task<IActionResult> Index()
+    public async Task<IActionResult> Index(string? category)
     {
-        var blogs = await _context.Blogs
+        var query = _context.Blogs
             .Include(b => b.Author)
-            .ToListAsync();
+            .AsQueryable();
+
+        if (!string.IsNullOrEmpty(category))
+        {
+            query = query.Where(b => b.Category == category);
+        }
+
+        var blogs = await query.ToListAsync();
 
         var viewModel = new BlogIndexViewModel
         {
             Blogs = blogs,
             TotalBlogs = await _context.Blogs.CountAsync(),
-            TotalUsers = await _context.Users.CountAsync()
+            TotalUsers = await _context.Users.CountAsync(),
+            SelectedCategory = category
         };
 
         return View(viewModel);

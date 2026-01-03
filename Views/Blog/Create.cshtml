@@ -23,18 +23,22 @@
                     </div>
                     <div class="hidden md:block">
                         <div class="ml-10 flex items-baseline space-x-4">
-                            <a href="{{ route('books.index') }}" class="text-purple-700 rounded-md font-bold hover:text-purple-500">Blogs</a>
-                            <a href="{{ route('reviews.index') }}" class="text-purple-700 rounded-md font-bold hover:text-purple-500">About</a>
+                            <a asp-controller="Blog" asp-action="Index" class="text-purple-700 rounded-md font-bold hover:text-purple-500">Blogs</a>
+                            <a asp-controller="About" asp-action="Index" class="text-purple-700 rounded-md font-bold hover:text-purple-500">About</a>
                         </div>
                     </div>
                 </div>
                 <div class="hidden md:block">
                     <div class="ml-4 flex items-center md:ml-6">
-                        <!--                        <p class="text-white mr-4">Profile</p>-->
-                        <!--                        <form action="{{ route('logout') }}" method="POST">-->
-                        <!--                            <button type="submit" class="text-white bg-red-950/60 rounded-md px-3 py-2 text-sm font-medium hover:bg-red-900">Logout</button>-->
-                        <!--                        </form>-->
-                        <a href="{{ route('login') }}" class="text-white bg-purple-900/40 rounded-md px-3 py-2 text-sm font-medium hover:bg-purple-500">Login</a>
+                        @if (ViewContext.HttpContext.Session.GetInt32("UserId") != null)
+                        {
+                            <a asp-controller="Auth" asp-action="Profile" class="text-white bg-purple-900/40 rounded-md px-3 py-2 text-sm font-medium hover:bg-purple-500">Profile</a>
+                        }
+                        else
+                        {
+                            <a asp-controller="Auth" asp-action="Login" class="text-white bg-purple-900/40 rounded-md px-3 py-2 text-sm font-medium hover:bg-purple-500">Login</a>
+                        }
+
                     </div>
                 </div>
             </div>
@@ -84,7 +88,7 @@
                                             <label asp-for="Category" for="category" class="block text-sm/6 font-medium text-white">Category</label>
                                             <div class="mt-2">
                                                 <select id="category" asp-for="Category" name="category" class="outline-white/10 block w-full rounded-md bg-white/5 px-3 py-3 text-base text-white outline-1 -outline-offset-1 placeholder:text-gray-500 focus:outline-2 focus:-outline-offset-2 focus:outline-purple-700 sm:text-sm/6">
-                                                    <option value="Software Engineer" class="bg-neutral-950">Software Engineer</option>
+                                                    <option value="Software Engineering" class="bg-neutral-950">Software Engineer</option>
                                                     <option value="Artificial Intelligence" class="bg-neutral-950">Artificial Intelligence</option>
                                                     <option value="Computer Science" class="bg-neutral-950">Computer Science</option>
                                                     <option value="Cybersecurity" class="bg-neutral-950">Cybersecurity</option>
